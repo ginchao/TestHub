@@ -148,7 +148,7 @@ end)
 end
 end)
 end)
-tlgs:Button("Teleport Player", function()
+tgls:Button("Teleport Player", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame
 end)
 tgls:Toggle("Auto Teleport",false, function(t)
@@ -161,6 +161,10 @@ end)
 end
 end)
 end)
+tgls:Button("Reset Character", function() 
+ game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+ end) 
+local tgls = serv:Channel("Button") 
  tgls:Button("WallSky", function() 
  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  
   
@@ -286,9 +290,7 @@ end)
  tgls:Button("Fling Punch", function() 
  loadstring(game:HttpGet("https://raw.githubusercontent.com/fedoratums/Base-Script/Base-Script/fedoratum punch fling",true))() 
  end) 
- tgls:Button("Reset Character", function() 
- game.Players.LocalPlayer.Character.Humanoid.Health = 0 
- end) 
+
  tgls:Button("Teleport Tool", function() 
  mouse = game.Players.LocalPlayer:GetMouse() 
  tool = Instance.new("Tool") 
