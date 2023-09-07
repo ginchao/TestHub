@@ -122,6 +122,16 @@ end)
 tgls:Button("Teleport Player", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame
 end)
+tgls:Toggle("Auto Teleport",false, function(t)
+getgenv().autotele = t
+spawn(function()
+while autotele do wait()
+pcall(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame wait()
+end)
+end
+end)
+end)
 tgls:Toggle("Auto Bring Player",false, function(a)
 AutoBr = a
 end)
@@ -151,16 +161,7 @@ end)
 end
 end)
 end)
-tgls:Toggle("Auto Teleport",false, function(t)
-getgenv().autotele = t
-spawn(function()
-while autotele do wait()
-pcall(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame wait()
-end)
-end
-end)
-end)
+
 tgls:Button("Reset Character", function() 
  game.Players.LocalPlayer.Character.Humanoid.Health = 0 
  end) 
