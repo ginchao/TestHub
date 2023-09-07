@@ -2,6 +2,26 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
  local win = DiscordLib:Window("Test Hub") 
  local serv = win:Server("Universal", "rbxassetid://4483345998") 
  local tgls = serv:Channel("Main") 
+tgls:Toggle("Grab Any Tool Drop",false, function(l)
+getgenv().grabtools = l
+spawn(function()
+while grabtools do wait()
+pcall(function()
+while grabtools do wait()
+spawn(function()
+for i, m in pairs(game.Workspace:GetChildren()) do
+if m.ClassName == "Tool" and m:FindFirstChild("Handle") then
+firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, m.Handle, 1) wait()
+if grabtools == false then break; end
+end
+end
+end)
+end
+end)
+end
+end)
+end)
+local drops = ser
  tgls:Toggle("EspName",false, function(v) 
  local esp_settings = {  
      textsize = 12, 
@@ -79,6 +99,68 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
  end) 
  end) 
 local tgls = serv:Channel("Player") 
+local plrlist = {}
+local plr = nil
+for i, v in pairs(game:GetService("Players"):GetChildren()) do
+table.insert(plrlist,v.Name)
+end
+local drop = tgls:Dropdown("Choose Player", plrlist, function(m)
+for i, b in pairs(game:GetService("Workspace"):GetChildren()) do
+if m == b.name then
+plr = m
+end
+end
+end)
+tgls:Button("Refresh Player", function()
+drop:Clear()
+for i, v in pairs(game.Players:GetChildren()) do
+if v:IsA("Player") then
+drop:Add(v.Name)
+end
+end
+end)
+tgls:Toggle("Auto Bring Player",false, function(a)
+AutoBr = a
+end)
+spawn(function()
+while wait() do
+if AutoBr then
+pcall(function()
+ game.Workspace[plr].HumanoidRootPart.CFrame = 
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -4)
+end)
+end
+end
+end)
+tgls:Toggle("Auto Bring All Player",false, function(t)
+getgenv().autobr = t
+spawn(function()
+while autobr == true do wait()
+spawn(function()
+for i, v in pairs(game.Workspace:GetChildren()) do
+if v:FindFirstChild("HumanoidRootPart") then 
+v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 4
+, 0) wait()
+if autobr == false then break end
+end
+end
+end)
+end
+end)
+end)
+tlgs:Button("Teleport Player", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame
+end)
+tgls:Toggle("Auto Teleport",false, function(t)
+getgenv().autotele = t
+spawn(function()
+while autotele do wait()
+pcall(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace[plr].HumanoidRootPart.CFrame wait()
+end)
+end
+end)
+end)
  tgls:Button("WallSky", function() 
  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  
   
