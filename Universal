@@ -2,26 +2,34 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
  local win = DiscordLib:Window("Test Hub") 
  local serv = win:Server("Universal", "rbxassetid://4483345998") 
  local tgls = serv:Channel("Main") 
-tgls:Toggle("Grab Any Tool Drop",false, function(l)
-getgenv().grabtools = l
-spawn(function()
-while grabtools do wait()
-pcall(function()
-while grabtools do wait()
-spawn(function()
-for i, m in pairs(game.Workspace:GetChildren()) do
-if m.ClassName == "Tool" and m:FindFirstChild("Handle") then
-firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, m.Handle, 1) wait()
-if grabtools == false then break; end
-end
-end
-end)
-end
-end)
-end
-end)
-end)
-local drops = ser
+ tgls:Toggle("Grab Any Tool Drop",false, function(l)  
+  getgenv().grabtools = l  
+  spawn(function()  
+  while grabtools do wait()  
+  pcall(function()  
+  while grabtools do wait()  
+  spawn(function()  
+  for i, m in pairs(game.Workspace:GetChildren()) do  
+  if m.ClassName == "Tool" and m:FindFirstChild("Handle") then  firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, m.Handle, 1) wait()  
+ if grabtools == false then break; end  
+ end  
+  end  
+  end)  
+  end  
+  end)  
+  end  
+  end) 
+ spawn(function() 
+ while wait() do 
+ if not getgenv().grabtools then break end 
+ for i, v in pairs(game:GetService("Workspace"):GetChildren()) do 
+ if v:FindFirstChild("ClickDetector") then 
+ fireclickdetector(v.ClickDetector) wait() 
+ end 
+ end 
+ end 
+ end) 
+  end) 
  tgls:Toggle("EspName",false, function(v) 
  local esp_settings = {  
      textsize = 12, 
