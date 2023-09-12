@@ -2,7 +2,21 @@ local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/daw
  local win = DiscordLib:Window("Test Hub") 
  local serv = win:Server("Universal", "rbxassetid://4483345998") 
  local tgls = serv:Channel("Main") 
- tgls:Toggle("Grab Any Tool Drop",false, function(l)  
+tgls:Toggle("Grabtools",false, function(I)
+getgenv().autograb = I
+spawn(function()
+while autograb==true do wait()
+if not getgenv().autograb then break end
+local humanoid = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid")	
+for _, child in ipairs(workspace:GetChildren()) do
+if game.Players.LocalPlayer.Character and child:IsA("BackpackItem") and child:FindFirstChild("Handle") then
+humanoid:EquipTool(child)
+end
+end
+end
+end)
+end)
+ tgls:Toggle("Touch Grabtools",false, function(l)  
   getgenv().grabtools = l  
   spawn(function()  
   while grabtools do wait()  
