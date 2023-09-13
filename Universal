@@ -1,4 +1,4 @@
-local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")() 
+local DiscordLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/ginchao/Discord-Lib/main/Discord-Lib'))() 
  local win = DiscordLib:Window("Test Hub") 
  local serv = win:Server("Universal", "rbxassetid://4483345998") 
  local tgls = serv:Channel("Main") 
