@@ -188,6 +188,11 @@ tgls:Button("Reset Character", function()
  game.Players.LocalPlayer.Character.Humanoid.Health = 0 
  end) 
 local tgls = serv:Channel("Button") 
+tgls:Button("Rejoin", function()
+local tps = game:GetService("TeleportService")
+		local plr = game:GetService("Players").LocalPlayer
+		tps:TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
+	end)
  tgls:Button("WallSky", function() 
  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  
   
