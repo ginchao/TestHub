@@ -45,6 +45,23 @@ firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, m.Handle,
  end 
  end) 
   end) 
+local inf = nil
+tgls:Toggle("Infjump", false, function(v)
+if inf then inf:Disconnect() end
+getgenv().infi = v
+local Player = game.Players.LocalPlayer
+if infi ~= inf then
+inf = game.UserInputService.JumpRequest:Connect(function()
+if infi == false then inf:Disconnect() end
+    Player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait()
+end)
+end
+end)
+
+
+
+
  tgls:Toggle("EspName",false, function(v) 
  local esp_settings = {  
      textsize = 12, 
