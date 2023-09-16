@@ -189,9 +189,11 @@ spawn(function()
 while autobr == true do wait()
 spawn(function()
 for i, v in pairs(game.Players:GetPlayers()) do
+if v.Name ~= game.Players.LocalPlayer
 v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0
 , -5) wait()
 if autobr == false then break end
+end
 end
 end)
 end
