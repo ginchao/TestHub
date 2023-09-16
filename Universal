@@ -145,7 +145,7 @@ for i, v in pairs(game:GetService("Players"):GetChildren()) do
 table.insert(plrlist,v.Name)
 end
 local drop = tgls:Dropdown("Choose Player", plrlist, function(m)
-for i, b in pairs(game:GetService("Workspace"):GetChildren()) do
+for i, b in pairs(game:GetService("Players"):GetPlayers()) do
 if m == b.name then
 plr = m
 end
@@ -154,9 +154,7 @@ end)
 tgls:Button("Refresh Player", function()
 drop:Clear()
 for i, v in pairs(game.Players:GetChildren()) do
-if v:IsA("Player") then
 drop:Add(v.Name)
-end
 end
 end)
 tgls:Button("Teleport Player", function()
@@ -180,7 +178,7 @@ while wait() do
 if AutoBr then
 pcall(function()
  game.Workspace[plr].HumanoidRootPart.CFrame = 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -4)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -5)
 end)
 end
 end
@@ -190,12 +188,10 @@ getgenv().autobr = t
 spawn(function()
 while autobr == true do wait()
 spawn(function()
-for i, v in pairs(game.Workspace:GetChildren()) do
-if v:FindFirstChild("HumanoidRootPart") then 
-v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0
-, 0) wait()
+for i, v in pairs(game.Players:GetPlayers()) do
+v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0
+, -5) wait()
 if autobr == false then break end
-end
 end
 end)
 end
