@@ -357,7 +357,7 @@ sldrs:Button("Clear", function(v)
  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16 
  game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50 
  end) 
- local sldr = sldrs:Slider("Speeds", 0, 1000, 400, function(v) 
+ local sldr = sldrs:Slider("Speeds", 0, 1000, 0, function(v) 
   
  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v 
  end) 
@@ -379,7 +379,7 @@ sldrs:Button("Clear", function(v)
  sldrs:Button("Speed 30", function() 
  sldr:Change(30) 
  end) 
- local sldr = sldrs:Slider("Jumps", 0, 1000, 400, function(v) 
+ local sldr = sldrs:Slider("Jumps", 0, 1000, 0, function(v) 
   
  game.Players.LocalPlayer.Character.Humanoid.JumpPower = v 
  end) 
@@ -398,7 +398,7 @@ sldrs:Button("Clear", function(v)
  sldrs:Button("Jump 70", function() 
  sldr:Change(70) 
  end) 
- local sldr = sldrs:Slider("height", 0, 200, 200, function(v) 
+ local sldr = sldrs:Slider("height", 0, 100, 0, function(v) 
  game.Players.LocalPlayer.Character.Humanoid.HipHeight = v 
  end) 
  sldrs:Button("height 100", function() 
