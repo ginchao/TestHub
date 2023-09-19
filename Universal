@@ -166,7 +166,7 @@ end
  end) 
 tgls:Toggle("Spectate Player",false, function(h)
 if plr == nil then
-DiscordLib:Notification("Warning", "Choose Player to Spectate, Need Loadmap", "Ok")
+DiscordLib:Notification("Warning", "Choose Player to Spectate", "Ok")
 elseif plr ~= nil then
 getgenv().view = h
 spawn(function()
@@ -244,16 +244,15 @@ end)
 end
 end)
 end)
-
-tgls:Button("Reset Character", function() 
- game.Players.LocalPlayer.Character.Humanoid.Health = 0 
- end) 
-local tgls = serv:Channel("Button") 
 tgls:Button("Rejoin", function()
 local tps = game:GetService("TeleportService")
 		local plr = game:GetService("Players").LocalPlayer
 		tps:TeleportToPlaceInstance(game.PlaceId, game.JobId, plr)
 	end)
+tgls:Button("Reset Character", function() 
+ game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+ end) 
+local tgls = serv:Channel("Button") 
  tgls:Button("WallSky", function() 
  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  
   
