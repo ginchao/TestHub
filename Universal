@@ -157,47 +157,76 @@ for i, v in pairs(game.Players:GetChildren()) do
 drop:Add(v.Name)
 end
 end)
-tgls:Button("Teleport Player", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[plr].Character.HumanoidRootPart.CFrame
+tgls:Button("Teleport To Player, Need LoadMap", function() 
+if plr == nil then
+DiscordLib:Notification("Warning", "Choose Player to Teleport Player", "Ok")
+elseif plr ~= nil then
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[plr].Character.HumanoidRootPart.CFrame 
+end
+ end) 
+tgls:Toggle("Spectate Player",false, function(h)
+if plr == nil then
+DiscordLib:Notification("Warning", "Choose Player to Spectate, Need Loadmap", "Ok")
+elseif plr ~= nil then
+getgenv().view = h
+spawn(function()
+while view do wait()
+workspace.CurrentCamera.CameraSubject = game.Players[plr].Character
+if view == false then
+workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character
+end
+end
 end)
-tgls:Toggle("Spectate Player",false, function(h) 
- if plr == nil then 
- DiscordLib:Notification("Warning", "Choose Player to Super Ultra Skill, Need Loadmap", "Ok") 
- elseif plr ~= nil then 
- getgenv().view = h 
+end
+end)
+
+ tgls:Toggle("Auto Teleport Player",false, function(t) 
+if plr == nil then
+DiscordLib:Notification("Warning", "Choose Player to Auto Teleport Player", "Ok")
+elseif plr ~= nil then
+ getgenv().autotele = t 
  spawn(function() 
- while view do wait() 
- workspace.CurrentCamera.CameraSubject = game.Players[plr].Character 
- if view == false then 
- workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character 
- end 
- end 
+ while autotele do wait() 
+ pcall(function() 
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[plr].Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 6) wait() 
  end) 
  end 
- end)
-tgls:Toggle("Auto Teleport",false, function(t)
-getgenv().autotele = t
-spawn(function()
-while autotele do wait()
-pcall(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[plr].Character.HumanoidRootPart.CFrame wait()
-end)
+ end) 
 end
-end)
-end)
-tgls:Toggle("Auto Bring Player",false, function(a)
-AutoBr = a
-end)
-spawn(function()
-while wait() do
-if AutoBr then
-pcall(function()
- game.Players[plr].Character.HumanoidRootPart.CFrame = 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -5)
-end)
+ end) 
+ tgls:Toggle("Auto Bring Player",false, function(a) 
+if plr == nil then
+DiscordLib:Notification("Warning", "Choose Player to Bring Player", "Ok")
+elseif plr ~= nil then
+ getgenv().AutoBr = a 
+ spawn(function() 
+ while AutoBr do wait() 
+ pcall(function() 
+ 
+ game.Players[plr].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -5) wait() 
+ end) 
+ end 
+ end) 
 end
+ end) 
+ tgls:Toggle("Auto Tween Bring Player",false, function(p) 
+if plr == nil then
+DiscordLib:Notification("Warning", "Choose Player to Tween Bring Player", "Ok")
+elseif plr ~= nil then
+ getgenv().autobri = p 
+ spawn(function() 
+ while autobri do wait() 
+ pcall(function() 
+
+ local ok = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position) 
+ local tween = game.TweenService:Create(game.Players[plr].Character.HumanoidRootPart, TweenInfo.new(), {CFrame = ok * CFrame.new(0, 5, 0)})  
+ tween:Play() wait() 
+ 
+ end) 
+ end 
+ end) 
 end
-end)
+ end) 
 tgls:Toggle("Auto Bring All Player",false, function(t)
 local plrmain = game.Players.LocalPlayer.Name
 getgenv().autobr = t
