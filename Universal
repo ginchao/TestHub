@@ -58,10 +58,19 @@ wait()
 end)
 end
 end)
-
-
-
-
+tgls:Toggle("Auto Equip All", false, function(v)
+local plrmain = game.Players.LocalPlayer
+getgenv().equiptools = v
+if not getgenv().equiptools then plrmain.Character.Humanoid:UnequipTools() end
+while equiptools do wait()3
+for i, v in pairs(game.Players.LocalPlayer:FindFirstChild("Backpack"):GetChildren()) do
+if v:IsA("Tool") or v:IsA("HopperBin") or v:IsA("BackpackItem") then
+v.Parent = plrmain.Character
+if equiptools == false then plrmain.Character.Humanoid:UnequipTools()  end
+end
+end
+end
+end)
  tgls:Toggle("EspName",false, function(v) 
  local esp_settings = {  
      textsize = 12, 
